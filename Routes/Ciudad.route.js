@@ -5,8 +5,8 @@ const route = express.Router()
 
 const control = new CiudadControl();
 
-route.get('/', (req, res) => {
-  const ciudad = control.find()
+route.get('/', async (req, res) => {
+  const ciudad = await control.find()
   res.json({
     ciudad
   })

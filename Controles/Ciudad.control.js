@@ -1,8 +1,8 @@
 const Ciudad = require('../Services/Ciudad.service');
 
 class CiudadControl {
-   find() {
-    return Ciudad.findAll();
+   async find() {
+    return await Ciudad.findAll();
   }
 }
 
