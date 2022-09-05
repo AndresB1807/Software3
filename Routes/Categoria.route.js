@@ -5,8 +5,8 @@ const route = express.Router()
 
 const control = new CategoriaControl();
 
-route.get('/', (req, res) => {
-  const categorias = control.find()
+route.get('/', async(req, res) => {
+  const categorias = await control.find()
   res.json({
     categorias
   })

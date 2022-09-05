@@ -1,31 +1,34 @@
 const db = require('./Conection.service')
 const DataTypes = require('sequelize')
 
-const Trabajo = db.define('trabajo', {
+const Persona = db.define('persona', {
 
   Nombre: {
     type: DataTypes.STRING
   },
-  Descripcion: {
+  Apellido: {
     type: DataTypes.STRING
   },
-  Fecha_Limite: {
-    type: DataTypes.DATE
+  CV: {
+    type: DataTypes.BLOB
   },
-  Fecha_Creacion: {
+  Telefono: {
+    type: DataTypes.INTEGER
+  },
+  Email: {
+    type: DataTypes.STRING
+  },
+  trabajos_Id: {
+    type: DataTypes.INTEGER
+  },
+  Fecha_Creado: {
     type: DataTypes.DATE
   },
   Estado: {
     type: DataTypes.INTEGER
   },
-  categoria_Id: {
-    type: DataTypes.INTEGER
-  },
-  ciudads_Id: {
-    type: DataTypes.INTEGER
-  }
 },
 {timestamps: false}
 )
 
-module.exports = Trabajo
+module.exports = Persona
