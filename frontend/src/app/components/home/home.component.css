@@ -1,0 +1,14 @@
+.container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin:auto;
+}
+
+.empleos {
+  background-color: red;
+}
+
+.reclutador {
+  background-color: green;
+}
