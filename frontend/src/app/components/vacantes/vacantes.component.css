@@ -1,0 +1,23 @@
+.cardVacantes{
+    margin: 1rem;
+    background: white
+}
+
+.tableVacantes{
+    width: 100%;
+    background: whitesmoke;
+    color: dimgrey !important;
+}
+
+th{
+    color: green;
+    font-weight: bold;
+}
+
+td{
+    color: dimgray;
+}
+
+.tableVacantes > tr{
+    width:  100%;
+}

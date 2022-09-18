@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { ReclutadorComponent } from './components/reclutador/reclutador.component';
+import { VacantesComponent } from './components/vacantes/vacantes.component';
 import { TrabajosComponent } from './components/trabajos/trabajos.component';
 
 const routes: Routes = [
@@ -11,6 +13,20 @@ const routes: Routes = [
   {
     path: 'empleos',
     component: TrabajosComponent
+  },
+  {
+    path: 'reclutador',
+    component: ReclutadorComponent,
+    children: [
+      {
+        path: 'reclutador/vacantes',
+        component: VacantesComponent
+      }
+    ]
+  },
+  {
+    path: 'reclutador/vacantes',
+    component: VacantesComponent
   }
 ];
 

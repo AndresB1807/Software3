@@ -6,8 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { TrabajosComponent } from './components/trabajos/trabajos.component';
+import { ReclutadorComponent } from './components/reclutador/reclutador.component';
+import { VacantesComponent } from './components/vacantes/vacantes.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -15,13 +20,18 @@ import {MatCardModule} from '@angular/material/card';
     HomeComponent,
     UsuariosComponent,
     TrabajosComponent,
+    ReclutadorComponent,
+    VacantesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
