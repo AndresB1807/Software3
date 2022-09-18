@@ -10,7 +10,7 @@ import { TrabajosService } from 'src/app/services/trabajos/trabajos.service';
 })
 export class VacantesComponent implements OnInit {
 
-  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","activa","creada"]
+  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","activa","creada","editar","eliminar"]
 
   vacantes: any[] = [];
   categorias: any[] = [];
@@ -34,12 +34,10 @@ export class VacantesComponent implements OnInit {
 
   public async getCategorias(){
     this.categorias = await this.categoriasService.getCategorias();
-    console.log(this.categorias)
   }
 
   public async getCiudades(){
     this.ciudades = await this.ciudadesService.getCiudades();
-    console.log(this.ciudades)
   }
 
   private filtrar(res:any[],tipo:string){
@@ -54,8 +52,6 @@ export class VacantesComponent implements OnInit {
       let value = opciones.find(element => element.id == vacante[`${tipo}_Id`])
 
       vacante[tipo] = value.Nombre; 
-
-      console.log('value', value)
 
       return vacante;
     })

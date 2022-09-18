@@ -24,6 +24,18 @@
             <th mat-header-cell *matHeaderCellDef> Creada </th>
             <td mat-cell *matCellDef="let element"> {{element.Fecha_Creacion}} </td>
         </ng-container>
+        <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> Editar </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-mini-fab color="primary"> <mat-icon>edit</mat-icon> </button> 
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button> 
+            </td>
+        </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

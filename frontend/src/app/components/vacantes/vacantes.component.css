@@ -1,10 +1,11 @@
 .cardVacantes{
-    margin: 1rem;
+    width: fit-content;
+    margin: auto;
     background: white
 }
 
 .tableVacantes{
-    width: 100%;
+    width: fit-content;
     background: whitesmoke;
     color: dimgrey !important;
 }
@@ -12,12 +13,14 @@
 th{
     color: green;
     font-weight: bold;
+    padding: 1rem !important;
 }
 
 td{
     color: dimgray;
+    padding: 1rem !important;
 }
 
-.tableVacantes > tr{
-    width:  100%;
+.button{
+    border: none;
 }
