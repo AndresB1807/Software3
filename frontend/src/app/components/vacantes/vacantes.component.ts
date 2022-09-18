@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from 'src/app/services/categorias/categorias.service';
+import { CiudadesService } from 'src/app/services/ciudades/ciudades.service';
 import { TrabajosService } from 'src/app/services/trabajos/trabajos.service';
 
 @Component({
@@ -13,12 +14,15 @@ export class VacantesComponent implements OnInit {
 
   vacantes: any[] = [];
   categorias: any[] = [];
+  ciudades: any[] = [];
 
-  constructor(private trabajosService: TrabajosService, private categoriasService: CategoriasService) { }
+  constructor(private trabajosService: TrabajosService, private categoriasService: CategoriasService, 
+    private ciudadesService: CiudadesService) { }
 
   async ngOnInit() {
     await this.getCategorias();
     await this.getTrabajos();
+    await this.getCiudades();
   }
 
   public async getTrabajos(){
@@ -30,18 +34,18 @@ export class VacantesComponent implements OnInit {
 
       vacante['categoria'] = categoria.Nombre; 
 
-      console.log("categorias",vacante,categoria)
-
-
       return vacante;
     })
-
-    console.log("vac: ", this.vacantes)
   }
 
   public async getCategorias(){
     this.categorias = await this.categoriasService.getCategorias();
     console.log(this.categorias)
+  }
+
+  public async getCiudades(){
+    this.ciudades = await this.ciudadesService.getCiudades();
+    console.log(this.ciudades)
   }
 
 }
