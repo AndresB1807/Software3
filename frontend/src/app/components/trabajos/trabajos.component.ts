@@ -11,19 +11,17 @@ export class TrabajosComponent implements OnInit {
   trabajos: any[] = [];
   categorias: any[] = [];
 
-  constructor(private trabajoService:TrabajosService) { }
+  constructor(private trabajosService:TrabajosService) { }
 
   ngOnInit(): void {
     this.listarTrabajos()
   }
 
   async listarTrabajos() {
-    let res: any[] = await this.trabajoService.getTrabajos();
+    let res: any[] = await this.trabajosService.getTrabajos();
     this.trabajos = res.map(trabajos => {
-      let categoria = this.categorias.find(element => element.id == trabajos['categoria_Id'])
+      let categoria = this.categorias.find(element => element.id == trabajos['categoraia_Id'])
       trabajos['categoria'] = categoria.Nombre;
-      console.log("categorias",trabajos,categoria)
-      return trabajos;
     })
   }
 }
