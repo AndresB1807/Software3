@@ -1,5 +1,6 @@
 const express = require('express');
 const routerApi = require('./Routes/Index');
+const cors = require('cors');
 
 
 
@@ -7,6 +8,8 @@ const routerApi = require('./Routes/Index');
 
 const app = express();
 const port = 8081;
+
+app.use(cors())
 
 app.use(express.json())
 
