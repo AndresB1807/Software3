@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrabajosService, Trabajo } from 'src/app/services/trabajos/trabajos.service';
+import { TrabajosService } from 'src/app/services/trabajos/trabajos.service';
 
 @Component({
   selector: 'app-trabajos',
@@ -8,7 +8,8 @@ import { TrabajosService, Trabajo } from 'src/app/services/trabajos/trabajos.ser
 })
 export class TrabajosComponent implements OnInit {
 
-  ListarTrabajo!: Trabajo[];
+  trabajos: any[] = [];
+  categorias: any[] = [];
 
   constructor(private trabajoService:TrabajosService) { }
 
@@ -17,7 +18,12 @@ export class TrabajosComponent implements OnInit {
   }
 
   async listarTrabajos() {
-    this.trabajoService.getTrabajos()
+    let res: any[] = await this.trabajoService.getTrabajos();
+    this.trabajos = res.map(trabajos => {
+      let categoria = this.categorias.find(element => element.id == trabajos['categoria_Id'])
+      trabajos['categoria'] = categoria.Nombre;
+      console.log("categorias",trabajos,categoria)
+      return trabajos;
+    })
   }
-
 }
