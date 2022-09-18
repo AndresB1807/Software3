@@ -10,7 +10,8 @@ export class TrabajosService {
   constructor(private service: ProviderService) { }
 
   async getTrabajos(){
-    return await this.service.request("trabajo")
+    let res = await this.service.request("trabajo");
+    return res['trabajo'];
   }
 
 }

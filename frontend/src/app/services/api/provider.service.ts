@@ -13,6 +13,7 @@ export class ProviderService {
     try {
       console.log(environment.api+ `/${endp}`)
       const res = await this.http.get(environment.api + `/${endp}`).pipe(timeout(40000)).toPromise();
+      console.log(res);
       return res;
     } catch (error) {
       console.log(error)
