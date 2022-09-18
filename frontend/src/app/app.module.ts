@@ -13,6 +13,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatSidenavModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
