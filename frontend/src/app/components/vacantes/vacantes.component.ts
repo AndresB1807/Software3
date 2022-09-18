@@ -20,22 +20,16 @@ export class VacantesComponent implements OnInit {
     private ciudadesService: CiudadesService) { }
 
   async ngOnInit() {
+    await this.getCiudades();
     await this.getCategorias();
     await this.getTrabajos();
-    await this.getCiudades();
   }
 
   public async getTrabajos(){
     let res: any[] = await this.trabajosService.getTrabajos();
 
-    this.vacantes = res.map(vacante => {
-
-      let categoria = this.categorias.find(element => element.id == vacante['categoria_Id'])
-
-      vacante['categoria'] = categoria.Nombre; 
-
-      return vacante;
-    })
+    this.vacantes = this.filtrar(res,'categoria');
+    this.vacantes = this.filtrar(res,'ciudads');
   }
 
   public async getCategorias(){
@@ -46,6 +40,25 @@ export class VacantesComponent implements OnInit {
   public async getCiudades(){
     this.ciudades = await this.ciudadesService.getCiudades();
     console.log(this.ciudades)
+  }
+
+  private filtrar(res:any[],tipo:string){
+
+    let opciones: any[];
+
+    if(tipo === "categoria") opciones = this.categorias;
+    else if(tipo === "ciudads") opciones = this.ciudades;
+
+    return res.map(vacante => {
+
+      let value = opciones.find(element => element.id == vacante[`${tipo}_Id`])
+
+      vacante[tipo] = value.Nombre; 
+
+      console.log('value', value)
+
+      return vacante;
+    })
   }
 
 }

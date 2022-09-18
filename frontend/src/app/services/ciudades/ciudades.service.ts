@@ -10,6 +10,6 @@ export class CiudadesService {
 
   async getCiudades(){
     let res = await this.apiService.request("ciudad");
-    return res['categorias'];
+    return res['ciudad'];
   }
 }
