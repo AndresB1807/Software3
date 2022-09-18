@@ -11,7 +11,6 @@ export class ProviderService {
 
   async request( endp:string ):Promise<any>{
     try {
-      console.log(environment.api+ `/${endp}`)
       const res = await this.http.get(environment.api + `/${endp}`).pipe(timeout(40000)).toPromise();
       return res;
     } catch (error) {
