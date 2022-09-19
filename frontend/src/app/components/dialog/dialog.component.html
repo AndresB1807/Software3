@@ -44,10 +44,45 @@
 
     <mat-checkbox *ngIf="form.get('estado')" formControlName="estado">Activar</mat-checkbox>
 
+
+    <!-- Dialog Trabajos -->
+
+    <mat-form-field *ngIf="form.get('Nombre')" appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="Nombre" matInput>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="form.get('Apellido')" appearance="outline">
+      <mat-label>Apellido</mat-label>
+      <input formControlName="Apellido" matInput>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="form.get('Telefono')" appearance="outline">
+      <mat-label>Telefono</mat-label>
+      <input formControlName="Telefono" matInput>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="form.get('Correo')" appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input formControlName="Correo" matInput>
+    </mat-form-field>
+
+
+    <div class="input" *ngIf="form.get('HojaVida')">
+      <input formControlName="HojaVida" type="file" (change)="Capturarcv($event)">
+    </div>
+
+
   </form>
-  
+
 </div>
-<div mat-dialog-actions>
+
+<div mat-dialog-actions  *ngIf="form.get('Close')">
   <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button (click)="close()" [disabled]="form.invalid" cdkFocusInitial>Ok</button>
+</div>
+
+<div mat-dialog-actions *ngIf="form.get('Cerrar')">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="cerrar()" [disabled]="form.invalid" cdkFocusInitial>Aceptar</button>
 </div>
