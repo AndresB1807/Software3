@@ -5,8 +5,18 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 export interface DialogData {
   tipo: 'add' | 'edit' | 'delete';
-  animal: string;
-  name: string;
+  categorias?: any[],
+  ciudades?: any[]
+}
+
+export interface result{
+  titulo: string,
+  descripcion: string,
+  requerimientos: string,
+  fechaL: string,
+  categoria: string,
+  ciudad: string,
+  estado: boolean
 }
 
 @Component({
@@ -17,6 +27,8 @@ export interface DialogData {
 export class DialogComponent implements OnInit {
 
   form: FormGroup;
+  categorias: any[] = [];
+  ciudades: any[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
@@ -34,11 +46,25 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.categorias = this.data.categorias ?? [];
+    this.ciudades = this.data.ciudades ?? [];
   }
 
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  close(){
+    this.dialogRef.close({
+      titulo: this.form.get('titulo')?.value,
+      descripcion: this.form.get('descripcion')?.value,
+      requerimientos: this.form.get('requerimientos')?.value,
+      fechaL: this.form.get('fechaL')?.value,
+      categoria: this.form.get('categoria')?.value,
+      ciudad: this.form.get('ciudad')?.value,
+      estado: this.form.get('estado')?.value
+    });
   }
 
 }

@@ -5,25 +5,49 @@
 <div mat-dialog-content>
   <form novalidate [formGroup]="form">
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>Título</mat-label>
         <input formControlName="titulo" matInput>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>Descripción</mat-label>
         <input formControlName="descripcion" matInput>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>Requerimientos</mat-label>
         <input formControlName="requerimientos" matInput>
     </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Fecha Limite</mat-label>
+        <input formControlName="fechaL" matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Categorias</mat-label>
+        <mat-select formControlName="categoria">
+            <mat-option *ngFor="let categoria of data.categorias" [value]="categoria.Nombre">{{categoria.Nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Ciudades</mat-label>
+        <mat-select formControlName="lugar">
+            <mat-option *ngFor="let ciudad of data.ciudades" [value]="ciudad.Nombre">{{ciudad.Nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="estado">Activar</mat-checkbox>
 
   </form>
   
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="close()" cdkFocusInitial>Ok</button>
 </div>
