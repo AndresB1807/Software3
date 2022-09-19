@@ -1,15 +1,16 @@
 
 .card {
-  background-color: #fdfaf7;
+  background-color: #f6ffe3;
   color: black;
   width: 80%;
   margin: auto;
   padding: 2%;
+  margin-top: 2%;
 }
 
 .card mat-card-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .card mat-card-subtitle{
@@ -20,6 +21,7 @@
 
 .card mat-card-content {
   font-size: 1rem;
+  margin-top: 1%;
 }
 
 .datos{
