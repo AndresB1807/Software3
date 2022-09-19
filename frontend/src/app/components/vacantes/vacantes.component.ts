@@ -18,9 +18,6 @@ export class VacantesComponent implements OnInit {
   categorias: any[] = [];
   ciudades: any[] = [];
 
-  animal: string = "";
-  name: string = "";
-
   constructor(private trabajosService: TrabajosService, private categoriasService: CategoriasService, 
     private ciudadesService: CiudadesService, public dialog: MatDialog) { }
 
@@ -65,13 +62,19 @@ export class VacantesComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       panelClass: 'dialogAdd',
-      data: {tipo: 'add', name: this.name, animal: this.animal},
+      data: {tipo: 'add', desde: 'vacantes',categorias: this.categorias, ciudades: this.ciudades},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      console.log(result)
+      if(result) this.postTrabajos(result);
     });
+  }
+
+  async postTrabajos(data:any){
+    await this.trabajosService.postTrabajos(data)
+    await this.getTrabajos();
   }
 
 }

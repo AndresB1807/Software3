@@ -9,9 +9,12 @@ export class TrabajosService {
   constructor(private service: ProviderService) { }
 
   async getTrabajos(){
-    let res = await this.service.request("trabajo");
+    let res = await this.service.requestGet("trabajo");
     return res['trabajo'];
+  }
 
+  async postTrabajos(body: any){
+    let res = await this.service.requestPost("trabajo", body);
   }
 }
 
