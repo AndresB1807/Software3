@@ -29,16 +29,16 @@
     </mat-form-field>
 
     <mat-form-field *ngIf="form.get('categoria')" appearance="outline">
-        <mat-label>Categorias</mat-label>
+        <mat-label>Categoria</mat-label>
         <mat-select formControlName="categoria">
-            <mat-option *ngFor="let categoria of data.categorias" [value]="categoria.Nombre">{{categoria.Nombre}}</mat-option>
+            <mat-option *ngFor="let categoria of data.categorias" [value]="categoria.id">{{categoria.Nombre}}</mat-option>
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field *ngIf="form.get('lugar')" appearance="outline">
-        <mat-label>Ciudades</mat-label>
-        <mat-select formControlName="lugar">
-            <mat-option *ngFor="let ciudad of data.ciudades" [value]="ciudad.Nombre">{{ciudad.Nombre}}</mat-option>
+    <mat-form-field *ngIf="form.get('ciudad')" appearance="outline">
+        <mat-label>Ciudad</mat-label>
+        <mat-select formControlName="ciudad">
+            <mat-option *ngFor="let ciudad of data.ciudades" [value]="ciudad.id">{{ciudad.Nombre}}</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -49,5 +49,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="close()" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="close()" [disabled]="form.invalid" cdkFocusInitial>Ok</button>
 </div>

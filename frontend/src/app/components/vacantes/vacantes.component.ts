@@ -68,7 +68,13 @@ export class VacantesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result)
+      if(result) this.postTrabajos(result);
     });
+  }
+
+  async postTrabajos(data:any){
+    await this.trabajosService.postTrabajos(data)
+    await this.getTrabajos();
   }
 
 }

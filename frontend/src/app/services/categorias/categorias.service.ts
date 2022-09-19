@@ -9,7 +9,7 @@ export class CategoriasService {
   constructor(private apiService: ProviderService) { }
 
   async getCategorias(){
-    let res = await this.apiService.request("categoria");
+    let res = await this.apiService.requestGet("categoria");
     return res['categorias'];
   }
 }

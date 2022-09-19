@@ -9,7 +9,7 @@ export class CiudadesService {
   constructor(private apiService: ProviderService) { }
 
   async getCiudades(){
-    let res = await this.apiService.request("ciudad");
+    let res = await this.apiService.requestGet("ciudad");
     return res['ciudad'];
   }
 }

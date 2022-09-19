@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 export interface DialogData {
@@ -38,12 +39,12 @@ export class DialogComponent implements OnInit {
     this.form = new FormGroup({});
     
     if(data.desde === 'vacantes'){
-      this.form.addControl('titulo',new FormControl(''))
-      this.form.addControl('descripcion',new FormControl(''))
-      this.form.addControl('requerimientos',new FormControl(''))
-      this.form.addControl('fechaL',new FormControl(''))
-      this.form.addControl('categoria',new FormControl(''))
-      this.form.addControl('lugar',new FormControl(''))
+      this.form.addControl('titulo',new FormControl('', Validators.required))
+      this.form.addControl('descripcion',new FormControl('', Validators.required))
+      this.form.addControl('requerimientos',new FormControl('', Validators.required))
+      this.form.addControl('fechaL',new FormControl('', Validators.required))
+      this.form.addControl('categoria',new FormControl('',Validators.required))
+      this.form.addControl('ciudad',new FormControl('', Validators.required))
       this.form.addControl('estado',new FormControl(''))
     }
   }
@@ -59,15 +60,22 @@ export class DialogComponent implements OnInit {
   }
 
   close(){
+    let fechaCreacion = new Date();
+    let fecha = new Date(this.form.get('fechaL')?.value);
     this.dialogRef.close({
-      titulo: this.form.get('titulo')?.value,
-      descripcion: this.form.get('descripcion')?.value,
-      requerimientos: this.form.get('requerimientos')?.value,
-      fechaL: this.form.get('fechaL')?.value,
-      categoria: this.form.get('categoria')?.value,
-      ciudad: this.form.get('ciudad')?.value,
-      estado: this.form.get('estado')?.value
+      Nombre: this.form.get('titulo')?.value,
+      Descripcion: this.form.get('descripcion')?.value,
+      Requerimientos: this.form.get('requerimientos')?.value,
+      Fecha_Limite: this.formatearFecha(fecha),
+      Fecha_Creacion: this.formatearFecha(fechaCreacion),
+      categoria_Id: this.form.get('categoria')?.value,
+      ciudads_Id: this.form.get('ciudad')?.value,
+      Estado: this.form.get('estado')?.value ? 1 : 0
     });
+  }
+
+  formatearFecha(date : Date): string{
+    return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDay();
   }
 
 }
