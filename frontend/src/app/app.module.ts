@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
