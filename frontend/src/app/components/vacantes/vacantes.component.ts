@@ -62,7 +62,7 @@ export class VacantesComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       panelClass: 'dialogAdd',
-      data: {tipo: 'add', categorias: this.categorias, ciudades: this.ciudades},
+      data: {tipo: 'add', desde: 'vacantes',categorias: this.categorias, ciudades: this.ciudades},
     });
 
     dialogRef.afterClosed().subscribe(result => {

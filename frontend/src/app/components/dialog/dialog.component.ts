@@ -35,15 +35,17 @@ export class DialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {
-    this.form = new FormGroup({
-      titulo: new FormControl(''),
-      descripcion: new FormControl(''),
-      requerimientos: new FormControl(''),
-      fechaL : new FormControl(''),
-      categoria : new FormControl(''),
-      lugar : new FormControl(''),
-      estado : new FormControl(''),
-    });
+    this.form = new FormGroup({});
+    
+    if(data.desde === 'vacantes'){
+      this.form.addControl('titulo',new FormControl(''))
+      this.form.addControl('descripcion',new FormControl(''))
+      this.form.addControl('requerimientos',new FormControl(''))
+      this.form.addControl('fechaL',new FormControl(''))
+      this.form.addControl('categoria',new FormControl(''))
+      this.form.addControl('lugar',new FormControl(''))
+      this.form.addControl('estado',new FormControl(''))
+    }
   }
 
   ngOnInit(): void {
