@@ -9,7 +9,7 @@
 <mat-drawer-container class="container" autosize>
     <mat-drawer #drawer class="sidenav" mode="side">
         <div>
-            <h2>Vacantes</h2>
+            <h2 [routerLink]="'reclutador/vacantes'">Vacantes</h2>
         </div>
         <hr>
         <div>
@@ -17,4 +17,9 @@
         </div>
         <hr>
     </mat-drawer>
+
+    <div style="margin: 1rem;"> 
+        <router-outlet></router-outlet>
+    </div>
+
 </mat-drawer-container>

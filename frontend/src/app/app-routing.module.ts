@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ReclutadorComponent,
     children: [
       {
-        path: 'reclutador/vacantes',
+        path: 'vacantes',
         component: VacantesComponent
       }
     ]
