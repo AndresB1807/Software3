@@ -29,4 +29,15 @@ export class ProviderService {
       console.log(error)
     }
   }
+
+  async requestPatch( endp:string, body: any ):Promise<any>{
+    try {
+      console.log(body);
+      const res = await this.http.patch(environment.api + `/${endp}`, body).pipe(timeout(40000)).toPromise();
+      console.log(res);
+      return res;
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }

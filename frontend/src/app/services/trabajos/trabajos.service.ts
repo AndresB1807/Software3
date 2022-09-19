@@ -16,5 +16,9 @@ export class TrabajosService {
   async postTrabajos(body: any){
     let res = await this.service.requestPost("trabajo", body);
   }
+
+  async patchTrabajos(id:number, body: any){
+    let res = await this.service.requestPatch(`trabajo/${id}`, body);
+  }
 }
 
