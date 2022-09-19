@@ -20,5 +20,9 @@ export class TrabajosService {
   async patchTrabajos(id:number, body: any){
     let res = await this.service.requestPatch(`trabajo/${id}`, body);
   }
+
+  async deleteTrabajos(id:number, body: any){
+    let res = await this.service.requestDelete(`trabajo/${id}`, body);
+  }
 }
 

@@ -21,8 +21,8 @@ export class ProviderService {
 
   async requestPost( endp:string, body: any ):Promise<any>{
     try {
-      const res = await this.http.post(environment.api + `/${endp}`, body).pipe(timeout(40000)).toPromise();
       console.log(body);
+      const res = await this.http.post(environment.api + `/${endp}`, body).pipe(timeout(40000)).toPromise();
       console.log(res);
       return res;
     } catch (error) {
@@ -34,6 +34,17 @@ export class ProviderService {
     try {
       console.log(body);
       const res = await this.http.patch(environment.api + `/${endp}`, body).pipe(timeout(40000)).toPromise();
+      console.log(res);
+      return res;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async requestDelete( endp:string, body: any ):Promise<any>{
+    try {
+      console.log(body);
+      const res = await this.http.delete(environment.api + `/${endp}`, body).pipe(timeout(40000)).toPromise();
       console.log(res);
       return res;
     } catch (error) {

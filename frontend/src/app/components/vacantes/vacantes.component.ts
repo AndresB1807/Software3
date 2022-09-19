@@ -60,6 +60,7 @@ export class VacantesComponent implements OnInit {
   }
 
   openDialog(tipo: string, desde: string, vacante?: any): void {
+    console.log(tipo)
     const dialogRef = this.dialog.open(DialogComponent, {
       panelClass: 'dialogAdd',
       data: {
@@ -67,13 +68,13 @@ export class VacantesComponent implements OnInit {
         desde: desde,
         categorias: this.categorias, 
         ciudades: this.ciudades,
-        titulo: vacante.Nombre,
-        descripcion: vacante.Descripcion,
-        requerimientos: vacante.Requerimientos,
-        fechaL: vacante.Fecha_Limite,
-        categoria: vacante.categoria_Id,
-        ciudad: vacante.ciudads_Id,
-        estado: vacante.Estado
+        titulo: vacante?.Nombre,
+        descripcion: vacante?.Descripcion,
+        requerimientos: vacante?.Requerimientos,
+        fechaL: vacante?.Fecha_Limite,
+        categoria: vacante?.categoria_Id,
+        ciudad: vacante?.ciudads_Id,
+        estado: vacante?.Estado
       },
     });
 
@@ -81,8 +82,9 @@ export class VacantesComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result)
 
-      if(result && tipo === 'add') this.postTrabajos(result);
-      else if(result && tipo === 'edit') this.patchTrabajos(vacante.id,result);
+      if(result != undefined && tipo === 'add') this.postTrabajos(result);
+      else if(result != undefined && tipo === 'edit') this.patchTrabajos(vacante?.id,result);
+      else if(result && tipo === 'delete') this.deleteTrabajos(vacante?.id,result);
     });
   }
 
@@ -93,6 +95,11 @@ export class VacantesComponent implements OnInit {
 
   async patchTrabajos(id: number, data:any){
     await this.trabajosService.patchTrabajos(id,data)
+    await this.getTrabajos();
+  }
+
+  async deleteTrabajos(id: number, data:any){
+    await this.trabajosService.deleteTrabajos(id,data)
     await this.getTrabajos();
   }
 

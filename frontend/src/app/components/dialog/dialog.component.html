@@ -2,7 +2,7 @@
 <h1 *ngIf="data.tipo == 'edit'" mat-dialog-title>Editar</h1>
 <h1 *ngIf="data.tipo == 'delete'" mat-dialog-title>Eliminar</h1>
 
-<div mat-dialog-content>
+<div *ngIf="data.tipo != 'delete'" mat-dialog-content>
   <form novalidate [formGroup]="form">
 
     <mat-form-field *ngIf="form.get('titulo')" appearance="outline">
@@ -47,7 +47,17 @@
   </form>
   
 </div>
-<div mat-dialog-actions>
+
+<div *ngIf="data.tipo == 'delete'" mat-dialog-content>
+    <h2>¿Estas seguro?</h2>
+</div>
+
+<div *ngIf="data.tipo != 'delete'" mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>
   <button mat-button (click)="close()" [disabled]="form.invalid" cdkFocusInitial>Ok</button>
+</div>
+
+<div *ngIf="data.tipo == 'delete'" mat-dialog-actions>
+    <button *ngIf="data.tipo == 'delete'" mat-button [mat-dialog-close]="false">Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
 </div>
