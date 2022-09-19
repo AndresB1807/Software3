@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 export interface DialogData {
   tipo: 'add' | 'edit' | 'delete';
+  desde: 'vacantes' | ''   //agrega desde donde llama el dialog
   categorias?: any[],
   ciudades?: any[]
 }
