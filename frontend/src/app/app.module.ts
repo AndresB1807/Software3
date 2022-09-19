@@ -8,13 +8,18 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { TrabajosComponent } from './components/trabajos/trabajos.component';
 import { ReclutadorComponent } from './components/reclutador/reclutador.component';
 import { VacantesComponent } from './components/vacantes/vacantes.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { MatLabel } from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     TrabajosComponent,
     ReclutadorComponent,
     VacantesComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatTableModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

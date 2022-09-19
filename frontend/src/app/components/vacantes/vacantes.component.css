@@ -4,6 +4,14 @@
     background: white
 }
 
+.hrAdd{
+    width: 90%; 
+    height: 2px; 
+    border: none; 
+    border-radius: 1px;
+    background-color: rgb(157, 66, 124);
+}
+
 .tableVacantes{
     width: fit-content;
     background: whitesmoke;

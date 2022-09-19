@@ -1,0 +1,29 @@
+<h1 *ngIf="data.tipo == 'add'" mat-dialog-title>Añadir</h1>
+<h1 *ngIf="data.tipo == 'edit'" mat-dialog-title>Editar</h1>
+<h1 *ngIf="data.tipo == 'delete'" mat-dialog-title>Eliminar</h1>
+
+<div mat-dialog-content>
+  <form novalidate [formGroup]="form">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Título</mat-label>
+        <input formControlName="titulo" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Descripción</mat-label>
+        <input formControlName="descripcion" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Requerimientos</mat-label>
+        <input formControlName="requerimientos" matInput>
+    </mat-form-field>
+
+  </form>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>

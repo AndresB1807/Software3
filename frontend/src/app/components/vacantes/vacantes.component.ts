@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CategoriasService } from 'src/app/services/categorias/categorias.service';
 import { CiudadesService } from 'src/app/services/ciudades/ciudades.service';
 import { TrabajosService } from 'src/app/services/trabajos/trabajos.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-vacantes',
@@ -10,14 +12,17 @@ import { TrabajosService } from 'src/app/services/trabajos/trabajos.service';
 })
 export class VacantesComponent implements OnInit {
 
-  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","activa","creada","editar","eliminar"]
+  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","estado","creada","editar","eliminar"]
 
   vacantes: any[] = [];
   categorias: any[] = [];
   ciudades: any[] = [];
 
+  animal: string = "";
+  name: string = "";
+
   constructor(private trabajosService: TrabajosService, private categoriasService: CategoriasService, 
-    private ciudadesService: CiudadesService) { }
+    private ciudadesService: CiudadesService, public dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.getCiudades();
@@ -55,6 +60,18 @@ export class VacantesComponent implements OnInit {
 
       return vacante;
     })
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      panelClass: 'dialogAdd',
+      data: {tipo: 'add', name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
 }
