@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { ProviderService } from '../api/provider.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TrabajosService {
 
@@ -12,6 +11,7 @@ export class TrabajosService {
   async getTrabajos(){
     let res = await this.service.request("trabajo");
     return res['trabajo'];
-  }
 
+  }
 }
+

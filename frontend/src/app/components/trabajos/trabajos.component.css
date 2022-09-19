@@ -1,0 +1,42 @@
+
+.card {
+  background-color: #fdfaf7;
+  color: black;
+  width: 80%;
+  margin: auto;
+  padding: 2%;
+}
+
+.card mat-card-title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.card mat-card-subtitle{
+  color: black;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+}
+
+.card mat-card-content {
+  font-size: 1rem;
+}
+
+.datos{
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.datos p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+}
+
+button {
+  background-color: #85a8e0;
+}
+

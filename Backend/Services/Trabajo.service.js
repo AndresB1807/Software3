@@ -9,6 +9,9 @@ const Trabajo = db.define('trabajo', {
   Descripcion: {
     type: DataTypes.STRING
   },
+  Requerimientos: {
+    type: DataTypes.STRING
+  },
   Fecha_Limite: {
     type: DataTypes.DATE
   },
