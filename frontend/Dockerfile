@@ -10,6 +10,7 @@ COPY . /app
 
 RUN npm run build --prod
 
-FROM nginx:alpine
+FROM nginx:1.21.4-alpine
 
 COPY --from=build-env /app/dist/frontend /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
