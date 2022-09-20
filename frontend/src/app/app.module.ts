@@ -24,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReclutadorComponent,
     VacantesComponent,
     DialogComponent,
+    SolicitudesComponent,
   ],
   imports: [
     BrowserModule,

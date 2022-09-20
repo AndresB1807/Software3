@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ReclutadorComponent } from './components/reclutador/reclutador.component';
 import { VacantesComponent } from './components/vacantes/vacantes.component';
 import { TrabajosComponent } from './components/trabajos/trabajos.component';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'vacantes',
         component: VacantesComponent
+      },
+      {
+        path: 'solicitudes',
+        component: SolicitudesComponent
       }
     ]
   },

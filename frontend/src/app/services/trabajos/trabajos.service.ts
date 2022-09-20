@@ -8,6 +8,11 @@ export class TrabajosService {
 
   constructor(private service: ProviderService) { }
 
+  async getTrabajo(id: number){
+    let res = await this.service.requestGet(`trabajo/${id}`);
+    return res['trabajo'];
+  }
+
   async getTrabajos(){
     let res = await this.service.requestGet("trabajo");
     return res['trabajo'];

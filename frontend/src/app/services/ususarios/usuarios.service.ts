@@ -8,6 +8,11 @@ export class UsuariosService {
 
   constructor( private service: ProviderService) { }
 
+  async getUsuarios(){
+    let res = await this.service.requestGet("persona");
+    return res['personas'];
+  }
+
   async postUsuarios(body: any){
     let res = await this.service.requestPost("persona", body);
   }

@@ -12,7 +12,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class VacantesComponent implements OnInit {
 
-  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","estado","creada","editar","eliminar"]
+  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","estado","creada","editar","eliminar"];
 
   vacantes: any[] = [];
   categorias: any[] = [];
