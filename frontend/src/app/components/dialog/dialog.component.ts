@@ -107,7 +107,7 @@ export class DialogComponent implements OnInit {
   }
 
   Capturarcv(event: any): any {
-    const archivo = event.target.files[0]
+    const archivo = event.target.files
     this.archivos.push(archivo)
   }
 
