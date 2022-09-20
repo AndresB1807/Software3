@@ -16,4 +16,12 @@ export class UsuariosService {
   async postUsuarios(body: any){
     let res = await this.service.requestPost("persona", body);
   }
+
+  async patchUsuarios(id:number, body: any){
+    let res = await this.service.requestPatch(`persona/${id}`, body);
+  }
+
+  async deleteUsuarios(id:number, body: any){
+    let res = await this.service.requestDelete(`persona/${id}`, body);
+  }
 }

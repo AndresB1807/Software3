@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CategoriasService } from 'src/app/services/categorias/categorias.service';
 import { CiudadesService } from 'src/app/services/ciudades/ciudades.service';
 import { TrabajosService } from 'src/app/services/trabajos/trabajos.service';
 import { UsuariosService } from 'src/app/services/ususarios/usuarios.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-solicitudes',
@@ -11,7 +13,7 @@ import { UsuariosService } from 'src/app/services/ususarios/usuarios.service';
 })
 export class SolicitudesComponent implements OnInit {
 
-  displayedColumns: string[] = ["nombre_completo","email","vacante","categoria","lugar","estado","creada","editar","eliminar"];
+  displayedColumns: string[] = ["nombre_completo","email","vacante","categoria","lugar","estado","creada","aceptar","rechazar","eliminar"];
 
   solicitudes: any[] = [];
   ciudades: any[] = [];
@@ -19,7 +21,8 @@ export class SolicitudesComponent implements OnInit {
   trabajos: any[] = [];
 
   constructor(private usuariosService: UsuariosService, private trabajoService: TrabajosService,
-    private categoriasService: CategoriasService, private ciudadesService: CiudadesService,) { }
+    private categoriasService: CategoriasService, private ciudadesService: CiudadesService,
+    public dialog: MatDialog) { }
 
   async ngOnInit() {
     await this.getCiudades();
@@ -69,6 +72,36 @@ export class SolicitudesComponent implements OnInit {
 
   public async getCiudades(){
     this.ciudades = await this.ciudadesService.getCiudades();
+  }
+
+  public async actualizarEstado(id:number, estado: number){
+    await this.usuariosService.patchUsuarios(id, {Estado: estado} );
+    await this.getSolicitudes();
+  }
+
+  public async deleteEstado(id:number){
+    await this.usuariosService.deleteUsuarios(id,{});
+    await this.getSolicitudes();
+  }
+
+
+  openDialog(id:number): void {
+
+    const dialogRef = this.dialog.open(DialogComponent, {
+      panelClass: 'dialogAdd',
+      data: {
+        tipo: 'delete', 
+        desde: 'solicitudes',
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result)
+
+      if(result) this.deleteEstado(id);
+
+    });
   }
 
 }
