@@ -11,16 +11,13 @@ export interface DialogData {
   categorias?: any[],
   ciudades?: any[],
   vacantes?: any[]
-}
-
-export interface result{
-  titulo: string,
-  descripcion: string,
-  requerimientos: string,
-  fechaL: string,
-  categoria: string,
-  ciudad: string,
-  estado: boolean
+  titulo?: string,
+  descripcion?: string,
+  requerimientos?: string,
+  fechaL?:string,
+  categoria?: string,
+  ciudad?: string,
+  estado?: boolean
 }
 
 @Component({
@@ -39,16 +36,22 @@ export class DialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {
+
+    console.log('DATA',this.data)
+
     this.form = new FormGroup({});
 
     if(data.desde === 'vacantes'){
-      this.form.addControl('titulo',new FormControl('', Validators.required))
-      this.form.addControl('descripcion',new FormControl('', Validators.required))
-      this.form.addControl('requerimientos',new FormControl('', Validators.required))
-      this.form.addControl('fechaL',new FormControl('', Validators.required))
-      this.form.addControl('categoria',new FormControl('',Validators.required))
-      this.form.addControl('ciudad',new FormControl('', Validators.required))
-      this.form.addControl('estado',new FormControl(''))
+      this.form.addControl('titulo',new FormControl(data.titulo, Validators.required))
+      this.form.addControl('descripcion',new FormControl(data.descripcion, Validators.required))
+      this.form.addControl('requerimientos',new FormControl(data.requerimientos, Validators.required))
+      this.form.addControl('fechaL',new FormControl(data.fechaL, Validators.required))
+      this.form.addControl('categoria',new FormControl(data.categoria,Validators.required))
+      this.form.addControl('ciudad',new FormControl(data.ciudad, Validators.required))
+      this.form.addControl('estado',new FormControl(data.estado))
+
+      this.form.get('categoria')?.setValue(data.categoria);
+      this.form.get('ciudad')?.patchValue(data.ciudad);
       this.form.addControl('Close', new FormControl(''))
     } else if (data.desde === 'trabajos'){
       this.form.addControl('Nombre', new FormControl('', Validators.required))

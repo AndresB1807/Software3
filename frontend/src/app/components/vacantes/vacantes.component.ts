@@ -12,7 +12,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class VacantesComponent implements OnInit {
 
-  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","estado","creada","editar","eliminar"]
+  displayedColumns: string[] = ["titulo","fechaL","categoria","lugar","estado","creada","editar","eliminar"];
 
   vacantes: any[] = [];
   categorias: any[] = [];
@@ -59,21 +59,47 @@ export class VacantesComponent implements OnInit {
     })
   }
 
-  openDialog(): void {
+  openDialog(tipo: string, desde: string, vacante?: any): void {
+    console.log(tipo)
     const dialogRef = this.dialog.open(DialogComponent, {
       panelClass: 'dialogAdd',
-      data: {tipo: 'add', desde: 'vacantes',categorias: this.categorias, ciudades: this.ciudades},
+      data: {
+        tipo: tipo, 
+        desde: desde,
+        categorias: this.categorias, 
+        ciudades: this.ciudades,
+        titulo: vacante?.Nombre,
+        descripcion: vacante?.Descripcion,
+        requerimientos: vacante?.Requerimientos,
+        fechaL: vacante?.Fecha_Limite,
+        categoria: vacante?.categoria_Id,
+        ciudad: vacante?.ciudads_Id,
+        estado: vacante?.Estado
+      },
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result)
-      if(result) this.postTrabajos(result);
+
+      if(result != undefined && tipo === 'add') this.postTrabajos(result);
+      else if(result != undefined && tipo === 'edit') this.patchTrabajos(vacante?.id,result);
+      else if(result && tipo === 'delete') this.deleteTrabajos(vacante?.id,result);
     });
   }
 
   async postTrabajos(data:any){
     await this.trabajosService.postTrabajos(data)
+    await this.getTrabajos();
+  }
+
+  async patchTrabajos(id: number, data:any){
+    await this.trabajosService.patchTrabajos(id,data)
+    await this.getTrabajos();
+  }
+
+  async deleteTrabajos(id: number, data:any){
+    await this.trabajosService.deleteTrabajos(id,data)
     await this.getTrabajos();
   }
 
